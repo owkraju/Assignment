@@ -1,9 +1,13 @@
 package validation
+import 
+(
+	"time"
 
+)
 type Txns struct{
 	
-	Value string `json:"value"`
-	Version float32 `json:"version"`
+	Value int `json:"value"`
+	Version string `json:"version"`
 	Valid bool `json:"valid"`
 	
 
@@ -15,8 +19,8 @@ type BlockData struct {
 	PrevBlockHash string `json:"prevhash"`
 	BlockHash string `json:"blockhash"`
 	Txns    []Txns  `json:"txns"`
-	CreationTimeStamp string `json:"creationtime"`
-	BlockStatus string
+	CreationTimeStamp time.Time `json:"creationtime"`
+	BlockStatus string `json:"bstatus"`
 	
 }
 type block interface{

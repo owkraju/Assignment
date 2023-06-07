@@ -38,11 +38,20 @@ func main() {
 
 	_ = json.Unmarshal([]byte(file), &txnList)
 
+	/*
+	here it will loop to validate the txns with go routines
+	and push them into the channels 
+	*/
 	for i := 0; i <len(txnList); i++ {
 		tempTxn := txnList[i]
 		wg.Add(1)
 		go validation.Push(tempTxn, validChannel,invalidChannel ,&wg)
 	}
+	/*
+	processed txns will get the pulled into the channels of valid and invalid channels 
+	within the range of the txns list
+
+	*/
 
 	for i := 0; i < len(txnList); i++ {
 		select{
@@ -58,7 +67,12 @@ func main() {
 	validation.Update(ProcessedList ,BLOCKSIZE)
 	fetchBlock()
 	
+
 }
+/*
+Fetch the block based on the blocknumber from the block.json file 
+by reading the json file using the binary search
+*/
 func fetchBlock(){
 	var blocklist []validation.BlockData
 	

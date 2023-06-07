@@ -48,8 +48,8 @@ func Update(pList []Txns,BLOCKSIZE int ){
 
 				block.Txns = pList[start:last]
 				blockList = append(blockList,block)
-		
-					
+				block.BlockStatus="Committed"
+				block.CreationTimeStamp=time.Now()
 					endTime:=time.Since(startTime)
 					fmt.Printf("\nTime taken to process a block number %v and time %v is\n ",i,endTime)
 
@@ -68,7 +68,8 @@ func Update(pList []Txns,BLOCKSIZE int ){
 
 					block.Txns=pList[start:]
 					blockList = append(blockList,block)
-
+					block.BlockStatus="Committed"
+					block.CreationTimeStamp=time.Now()
 					// jsonData, err := json.Marshal(blockList)
 					// if err != nil {
 					// 	fmt.Println("Error:", err)
@@ -98,6 +99,9 @@ func Update(pList []Txns,BLOCKSIZE int ){
 			db, err := leveldb.OpenFile("./db", nil)
 			defer db.Close()
 
+			/*
+			Storing the valid t 
+			*/
 	for i:=0;i<len(pList);i++{
 		var insertData Txns
 		insertData=pList[i]

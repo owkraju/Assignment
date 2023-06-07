@@ -1,0 +1,31 @@
+[
+    {
+        "blocknumber": 1,
+        "prevhash": "",
+        "blockhash": "1525994c1ad3144d9c918d77c409666e",
+        "txns": [
+            {
+                "value": 2,
+                "version": "1.0",
+                "valid": true
+            },
+            {
+                "value": 7,
+                "version": "1.0",
+                "valid": true
+            },
+            {
+                "value": 8,
+                "version": "1.0",
+                "valid": true
+            },
+            {
+                "value": 9,
+                "version": "1.0",
+                "valid": true
+            }
+        ],
+        "creationtime": "2023-06-07T23:46:12.842545114+05:30",
+        "bstatus": "Committed"
+    }
+]
