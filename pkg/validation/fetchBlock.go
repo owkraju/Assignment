@@ -2,6 +2,11 @@ package validation
 import (
     "fmt"
 )
+
+/*
+	for faster searching we make use of the binary search to fetch the block
+
+*/
 func FetchBlockNo(blocklist []BlockData,bNo int ){
 	bLength:=len(blocklist) 
 
